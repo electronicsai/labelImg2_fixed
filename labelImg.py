@@ -859,7 +859,7 @@ class MainWindow(QMainWindow, WindowMixin):
         #units = - delta / (8 * 15)
         units = - delta / (2 * 15)
         bar = self.scrollBars[orientation]
-        bar.setValue(bar.value() + bar.singleStep() * units)
+        bar.setValue(int(bar.value() + bar.singleStep() * units))
 
     def setZoom(self, value):
         self.actions.fitWidth.setChecked(False)
@@ -908,7 +908,7 @@ class MainWindow(QMainWindow, WindowMixin):
         # zoom in
         units = delta / (8 * 15)
         scale = 10
-        self.addZoom(scale * units)
+        self.addZoom(int(scale * units))
 
         # get the difference in scrollbar values
         # this is how far we can move
@@ -919,8 +919,8 @@ class MainWindow(QMainWindow, WindowMixin):
         new_h_bar_value = h_bar.value() + move_x * d_h_bar_max
         new_v_bar_value = v_bar.value() + move_y * d_v_bar_max
 
-        h_bar.setValue(new_h_bar_value)
-        v_bar.setValue(new_v_bar_value)
+        h_bar.setValue(int(new_h_bar_value))
+        v_bar.setValue(int(new_v_bar_value))
 
     def setFitWindow(self, value=True):
         if value:
